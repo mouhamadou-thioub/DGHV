@@ -1,7 +1,22 @@
- $ gcc -o test final.c -lgmp
+Le chiffrement de DGHV est un système de chiffrement homomorphe. Dans sa thèse, propose un chiffrement complètement homomorphe
+(Fully Homomorph Encryption en anglais).Deux ans plus tard, il reprit l'idée avec trois co-auteurs pour un cryptosystème plus 
+efficace dit de DGHV( Dijk-Gentry-Halevi-Vaikuntanathan).
+	
+La clé secrète sera un nombre premier p de taille η.
+Pour chiffré un message m ∈ {0, 1}, on choisit au hasard un entier r ∈ ]−2γ,2γ [ et un entier q ∈ [0, 2γ /p[
+Le chiffré du message est Enc(m)=c=pq+2r+m. Pour déchiffrer , on calcule Dec(c)=(c mod p)mod 2.
+Les propriétés  homomorphes sont immédiates . En effet, si
+c1 =Enc(m1)=pq1 +2r1 +m1 et
+c2 =Enc(m2)=pq2 +2r2 +m2,
+ona :
+c1+c2 =(q1+q2 )p+2(r1+r2 )+m1m2 et
+c1c2 =(c2q1+c1q2+q1q2 )p+2(2r1r2+r2m1+r1m2)+m1m2.
+
+Pour compiler e code:o
+$ gcc -o test final.c -lgmp
 $ ./test
 
-
+On a utiliser la libraire GMP.Cette dernière est très utile en cryptographie.Elle permet de faire de l'arithmétique sur les grands nombres
 
 En executant le programme, nous aurons comme affichage un Menu avec 5 options. Nous choissirons
 une option parmi les 5.
